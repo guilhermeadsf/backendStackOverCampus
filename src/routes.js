@@ -13,4 +13,6 @@ routes.post('/createPost', PostController.store);
 
 routes.get('/getThemes', ThemeController.getThemes);
 
+routes.post('/login', UserController.login);
+
 module.exports = routes;

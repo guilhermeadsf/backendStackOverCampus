@@ -31,15 +31,24 @@ module.exports = {
     } catch (e) {
       return res.status(500).send('' + e);
     }
+  },
+
+  async login(req, res) {
+    const { email, password } = req.body;
+
+    try {
+      const user = await User.findOne({ email }).select('password');
+
+      if (user) {
+        const { password: passwordHash } = user;
+        if (bcrypt.compareSync(password, passwordHash))
+          return res.status(200).send('Ok');
+        else return res.status(400).send('Senha incorreta!');
+      } else {
+        return res.status(400).send('Não encontrado!');
+      }
+    } catch (e) {
+      return res.status(500).send('' + e);
+    }
   }
-
-  //   async getThemes(req, res) {
-  //     try {
-  //       const theme = await Theme.find();
-
-  //       return res.json(theme);
-  //     } catch (e) {
-  //       return res.status(500).send('' + e);
-  //     }
-  //   }
 };
