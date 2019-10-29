@@ -18,19 +18,19 @@ const UserSchema = new Schema(
     course: {
       type: String,
       required: true
-    },
-    sex: {
-      type: String,
-      required: true
-    },
-    birthday: {
-      type: String,
-      required: true
-    },
-    interests: {
-      type: [String],
-      required: true
     }
+    // sex: {
+    //   type: String,
+    //   required: true
+    // },
+    // birthday: {
+    //   type: String,
+    //   required: true
+    // },
+    // interests: {
+    //   type: [String],
+    //   required: true
+    // }
   },
   {
     timestamps: true

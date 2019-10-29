@@ -3,15 +3,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
   async store(req, res) {
-    const {
-      name,
-      password,
-      email,
-      course,
-      sex,
-      birthday,
-      interests
-    } = req.body;
+    const { name, password, email, course } = req.body;
 
     const salt = bcrypt.genSaltSync();
     const encryptPassword = bcrypt.hashSync(password, salt);
@@ -21,10 +13,7 @@ module.exports = {
         name,
         password: encryptPassword,
         email,
-        course,
-        sex,
-        birthday,
-        interests
+        course
       });
 
       return res.json(user);
