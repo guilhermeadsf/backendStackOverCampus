@@ -21,7 +21,7 @@ const PostSchema = new Schema(
     comments: {
       type: [String]
     },
-    photo: Buffer
+    imageUrl: String
   },
   {
     timestamps: true

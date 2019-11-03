@@ -2,7 +2,7 @@ const Post = require('../models/Post');
 
 module.exports = {
   async store(req, res) {
-    const { title, theme, description, emailUser, comments, photo } = req.body;
+    const { title, theme, description, emailUser, comments, imageUrl } = req.body;
 
     try {
       const post = await Post.create({
@@ -11,7 +11,7 @@ module.exports = {
         description,
         emailUser,
         comments,
-        photo
+        imageUrl
       });
 
       return res.json(post);
