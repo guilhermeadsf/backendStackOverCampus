@@ -12,6 +12,8 @@ routes.post('/createUser', UserController.store);
 
 routes.post('/createPost', PostController.store);
 
+routes.get('/getPosts/:theme', PostController.getPosts);
+
 routes.get('/getThemes', ThemeController.getThemes);
 
 routes.post('/login', UserController.login);
