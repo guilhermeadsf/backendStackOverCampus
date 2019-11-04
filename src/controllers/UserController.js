@@ -31,7 +31,7 @@ module.exports = {
       if (user) {
         const { password: passwordHash } = user;
         if (bcrypt.compareSync(password, passwordHash))
-          return res.status(200).send('Ok');
+          return res.status(200).json(user);
         else return res.status(400).send('Senha incorreta!');
       } else {
         return res.status(400).send('Não encontrado!');
