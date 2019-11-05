@@ -19,7 +19,10 @@ const PostSchema = new Schema(
       required: true
     },
     comments: {
-      type: [String]
+      type: [Object]
+    },
+    username: {
+      type: String
     },
     imageUrl: String
   },

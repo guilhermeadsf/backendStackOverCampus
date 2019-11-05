@@ -8,7 +8,8 @@ module.exports = {
       description,
       emailUser,
       comments,
-      imageUrl
+      imageUrl,
+      username
     } = req.body;
 
     try {
@@ -18,7 +19,8 @@ module.exports = {
         description,
         emailUser,
         comments,
-        imageUrl
+        imageUrl,
+        username
       });
 
       return res.json(post);
@@ -33,6 +35,17 @@ module.exports = {
     try {
       const posts = await Post.find({ theme });
       return res.status(200).json(posts);
+    } catch (e) {
+      return res.status(500).send('' + e);
+    }
+  },
+
+  async addComment(req, res) {
+    try {
+      const post = await Post.findById(req.body._id);
+      post.comments.push(req.body.comment);
+      await Post.findByIdAndUpdate(req.body._id, post);
+      return res.status(200).send();
     } catch (e) {
       return res.status(500).send('' + e);
     }
