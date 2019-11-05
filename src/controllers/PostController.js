@@ -42,10 +42,11 @@ module.exports = {
 
   async addComment(req, res) {
     try {
-      const post = await Post.findById(req.body._id);
+      let post = await Post.findById(req.body._id);
       post.comments.push(req.body.comment);
       await Post.findByIdAndUpdate(req.body._id, post);
-      return res.status(200).send();
+      post = await Post.findById(req.body._id);
+      return res.status(200).send(post);
     } catch (e) {
       return res.status(500).send('' + e);
     }
