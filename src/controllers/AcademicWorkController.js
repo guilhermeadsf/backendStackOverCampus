@@ -25,5 +25,15 @@ module.exports = {
     } catch (e) {
       return res.status(500).send('' + e);
     }
+  },
+
+  async getWorks(req, res) {
+    try {
+      const works = await AcademicWork.find();
+
+      return res.json(works);
+    } catch (e) {
+      return res.status(500).send('' + e);
+    }
   }
 };

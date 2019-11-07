@@ -20,6 +20,8 @@ routes.post('/login', UserController.login);
 
 routes.post('/createAcademicWork', AcademicWorkController.store);
 
+routes.get('/getAcademicsWork', AcademicWorkController.getWorks);
+
 routes.post('/addComment', PostController.addComment);
 
 module.exports = routes;
